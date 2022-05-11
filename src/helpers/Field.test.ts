@@ -38,7 +38,7 @@ describe('Field generator', () => {
 
     describe('simple cases', () => {
         it('wrong dencity', () => {
-            const errorText = 'Dencity must be between 0 to 1'
+            const errorText = 'Probability must be between 0 to 1'
 
             expect(() => fieldGenerator(1, -1)).toThrow(errorText)
             expect(() => fieldGenerator(1, 2)).toThrow(errorText)
@@ -61,6 +61,50 @@ describe('Field generator', () => {
                 [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
                 [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
             ])
+        })
+
+        it('Smallest posible fiel with mine', () => {
+            expect(fieldGenerator(1, 1)).toStrictEqual([[bomb]])
+        })
+
+        it('2 x 2 field with 100% mines', () => {
+            expect(fieldGenerator(2, 1)).toStrictEqual([
+                [bomb, bomb],
+                [bomb, bomb]
+            ])
+        })
+
+        it('2 x 2 field with 50% mines', () => {
+            
+            const field = fieldGenerator(2, 0.5)
+            const flatField = field.flat()
+
+            console.table(field)
+
+            const fieldsWithBombs = flatField.filter( field => field === bomb)
+            const fieldsWithoutBombs = flatField.filter( field => field === 2)
+
+            expect(fieldsWithBombs).toHaveLength(2)
+            expect(fieldsWithoutBombs).toHaveLength(2)
+        })
+
+        it('10 x 10 field with 25 mines', () => {
+            
+            const size = 10
+            const mines = 25
+
+            const probability = mines / (size*size)
+            const field = fieldGenerator(size, probability)
+
+            const flatField = field.flat()
+
+            const fieldWithBombs = flatField.filter( field => field === bomb)
+            const fieldWithoutBombs = flatField.filter( field => field <= 8)
+            
+
+            expect(fieldWithBombs).toHaveLength(25)
+            expect(fieldWithoutBombs).toHaveLength(75)
+
         })
 
     })
