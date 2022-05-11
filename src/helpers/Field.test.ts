@@ -48,15 +48,20 @@ describe('Field generator', () => {
             expect(fieldGenerator(1, 0)).toStrictEqual([[empty]])
         })
 
-        it('Big fiel without mine', () => {
-            expect(fieldGenerator(2, 0)).toStrictEqual([
-                [empty], [empty],
-                [empty], [empty],
+        it('Big field without mine', () => {
+            expect(fieldGenerator(10, 0)).toStrictEqual([
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
+                [empty ,empty, empty, empty ,empty, empty, empty ,empty, empty, empty],
             ])
         })
 
-        // it('Smallest posible fiel without mine', () => {
-        //     expect(fieldGenerator(1, 1)).toStrictEqual([[bomb]])
-        // })
     })
 })

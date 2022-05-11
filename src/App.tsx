@@ -4,7 +4,7 @@ import { fieldGenerator } from './helpers/Fiel';
 
 function App() {
 
-  fieldGenerator(2, 0)
+  fieldGenerator(3, 0);
 
   return (
     <div className="App">
