@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof GameName> = (args) => {
   )
 }
 
-export const MinesWeeperGameName = Template.bind({})
-MinesWeeperGameName.args = {
-  title: 'minesweeper'
+export const MinesweeperGameName = Template.bind({})
+MinesweeperGameName.args = {
+  name: 'minesweeper'
 }

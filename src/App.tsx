@@ -5,7 +5,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        name='minesweeper'
+        feature='flag'
+        firstAction='alt'
+        secondAction='click'
+      />
     </div>
   );
 }

@@ -4,16 +4,14 @@ import styled from '@emotion/styled';
 import { Legend, LegendProps } from './Legend/Legend';
 import { GameName, GameNameProps } from './Title/Title';
 
-export const Header: FC = ({ }) => {
+export type HeaderType = LegendProps & GameNameProps
+
+export const Header: FC<HeaderType> = ({ name, ...legendProps }) => {
   return (
     <HeaderGame>
-      <GameName>
-        minesweerper
-      </GameName>
+      <GameName name={name} />
       <Legend
-        feature='flag'
-        firstAction='alt'
-        secondAction='click'
+        {...legendProps}
       />
     </HeaderGame>
   )
