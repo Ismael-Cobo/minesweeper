@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof GameName> = (args) => {
 
 export const MinesweeperGameName = Template.bind({})
 MinesweeperGameName.args = {
-  name: 'minesweeper'
+  children: 'minesweeper'
 }

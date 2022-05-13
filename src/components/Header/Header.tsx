@@ -6,10 +6,12 @@ import { GameName, GameNameProps } from './Title/Title';
 
 export type HeaderType = LegendProps & GameNameProps
 
-export const Header: FC<HeaderType> = ({ name, ...legendProps }) => {
+export const Header: FC<HeaderType> = ({ children, ...legendProps }) => {
   return (
     <HeaderGame>
-      <GameName name={name} />
+      <GameName>
+        {children}
+      </GameName>
       <Legend
         {...legendProps}
       />

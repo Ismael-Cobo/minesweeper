@@ -5,18 +5,10 @@ export interface GameNameProps {
   /**
    * Text for the header
    */
-  name: string
+  children: string
 }
 
-export const GameName = ({ name }: GameNameProps) => {
-  return (
-    <Title>
-      {name}
-    </Title>
-  )
-}
-
-const Title = styled.h1`
+export const GameName = styled.h1<GameNameProps>`
   margin-bottom: 2rem;
   font-family: monospace;
 `  
