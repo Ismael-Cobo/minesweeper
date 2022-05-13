@@ -1,18 +1,18 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Title } from "./Title";
+import { GameName } from './Title';
 
 export default {
   title: 'Minesweeper/Header/GameName',
-  component: Title
-} as ComponentMeta<typeof Title>
+  component: GameName
+} as ComponentMeta<typeof GameName>
 
-const Template: ComponentStory<typeof Title> = (args) => {
+const Template: ComponentStory<typeof GameName> = (args) => {
   return (
-    <Title {...args} />
+    <GameName {...args} />
   )
 }
 
-export const GameName = Template.bind({})
-GameName.args = {
+export const MinesWeeperGameName = Template.bind({})
+MinesWeeperGameName.args = {
   title: 'minesweeper'
 }

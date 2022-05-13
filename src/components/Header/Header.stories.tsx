@@ -15,8 +15,5 @@ const Template: ComponentStory<typeof Header> = (args) => {
 
 export const GameHeader = Template.bind({})
 GameHeader.args = {
-  title: 'minesweeper',
-  feature: 'flag',
-  firstAction: 'alt',
-  secondAction: 'click'
+  children: 'minesweeper'
 }

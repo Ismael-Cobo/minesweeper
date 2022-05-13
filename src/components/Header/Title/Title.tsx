@@ -1,22 +1,13 @@
 import styled from "@emotion/styled"
 
-export interface TitleProps {
+export interface GameNameProps {
   /**
    * Text for the header
    */
-  title: string
+  children: string
 }
 
-export const Title = ({
-  title
-}: TitleProps) => {
-  return (
-    <GameName>{title}</GameName>
-  )
-}
-
-
-const GameName = styled.h1`
+export const GameName = styled.h1<GameNameProps>`
   margin-bottom: 2rem;
   font-family: monospace;
 `  

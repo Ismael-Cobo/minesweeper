@@ -2,23 +2,18 @@ import { FC } from 'react';
 import styled from '@emotion/styled';
 
 import { Legend, LegendProps } from './Legend/Legend';
-import { Title, TitleProps } from './Title/Title';
+import { GameName, GameNameProps } from './Title/Title';
 
-export type HeaderProps = TitleProps & LegendProps
-
-export const Header: FC<HeaderProps> = ({
-  title,
-  feature,
-  firstAction,
-  secondAction
-}) => {
+export const Header: FC = ({ }) => {
   return (
     <HeaderGame>
-      <Title title={title} />
+      <GameName>
+        minesweerper
+      </GameName>
       <Legend
-        feature={feature}
-        firstAction={firstAction}
-        secondAction={secondAction}
+        feature='flag'
+        firstAction='alt'
+        secondAction='click'
       />
     </HeaderGame>
   )
