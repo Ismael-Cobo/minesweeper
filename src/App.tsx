@@ -1,5 +1,6 @@
 import './App.css';
 import { Header } from './components/Header/Header';
+import { Level } from './components/Scoreboard/Level/Level';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       >
         Minesweeper
       </Header>
+      <Level children={['easy', 'medium', 'expert']} />
     </div>
   );
 }
