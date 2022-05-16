@@ -6,7 +6,7 @@ export interface ResetProps {
   /**
    * Reset action on click
    */
-  onReset?: () => void
+  onReset: () => void
 }
 
 export const Reset: FC<ResetProps> = ({
