@@ -21,12 +21,12 @@ export const Counter: FC<CounterProps> = ({
 }
 
 const Frame = styled.div`
-  display: inline-block;
-  padding: 0 0.3vw;
-  color: #ec433c;
-  border: 0.15vw inset;
-  line-height: 2vw;
-  letter-spacing: 0.08em;
-  background-color: #333;
-  text-shadow: 0 0 0.1vw #ec433c;
+  padding: 0 4px;
+    color: #ec433c;
+    border: 3px inset;
+    line-height: 30px;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    background: #333;
+    text-shadow: 0 0 2px #ec433c;
 `

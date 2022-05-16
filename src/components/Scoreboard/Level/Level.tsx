@@ -27,17 +27,18 @@ export const Level: FC<LevelProps> = ({
 
 const Select = styled.select`
   margin: 0;
-  height: 2.5vw;
+  height: 36px;
   border-radius: 0;
-  border: 0.15vw solid;
-  border-color: white #9e9e9e #9e9e9e white;
+  border-width: 3px;
+  border-style: solid;
   background-color: #d1d1d1;
+  border-color: white #9e9e9e #9e9e9e white;
 `
 
 const Option = styled.option`
   font-weight: normal;
   display: block;
   white-space: nowrap;
-  min-height: 1.2em;
+  min-height: 1.2rem;
   padding: 0 0.2vw 0.2vw;
 `
