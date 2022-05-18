@@ -1,6 +1,8 @@
 import './App.css';
+import { Cell } from './components/Grid/Cell';
 import { Header } from './components/Header/Header';
 import { Scoreboard } from './components/Scoreboard';
+import { Cell as CellType } from './helpers/Fiel';
 
 function App() {
 
@@ -22,6 +24,11 @@ function App() {
         onReset={() => null}
         timer='000'
       />
+
+
+      <Cell onClick={() => { }} coords={[1, 2]} onContextMenu={() => { }}>
+        {8 as CellType}
+      </Cell>
 
     </div>
   );
