@@ -24,13 +24,15 @@ export interface CellProps {
   onContextMenu: (coords: Coords) => void
 }
 
+export const checkIsActiveCell = (cell: CellType): boolean => [
+  CellState.hidden,
+  CellState.mark,
+  CellState.weakMark
+].includes(cell)
+
 export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
 
-  const isActiveCell = [
-    CellState.hidden,
-    CellState.mark,
-    CellState.weakMark
-  ].includes(children)
+  const isActiveCell = checkIsActiveCell(children)
 
   const onClick = () => {
     /**
@@ -44,7 +46,7 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
 
   const onContextMenu = (elem: React.MouseEvent<HTMLElement>) => {
     /**
-     * Para que no pase nada cuando hacer click derecho
+     * Para que no pase nada cuando hacer click derecho y el alt + click
      */
     elem.preventDefault()
     if (isActiveCell) {
@@ -54,7 +56,8 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
 
   const props = {
     onClick,
-    onContextMenu
+    onContextMenu,
+    'data-testid': `${children}_${coords}`
   }
 
   return <ComponentMap {...props}>{children}</ComponentMap>
@@ -77,6 +80,11 @@ interface ComponentMapProps {
    * onContextMenu handler
    */
   onContextMenu: (coords: React.MouseEvent<HTMLElement>) => void
+
+  /**
+   * Test id
+   */
+  'data-testid'?: string
 
 }
 
