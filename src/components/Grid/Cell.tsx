@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { FC } from 'react'
 import { Cell as CellType, CellState, Coords } from '../../helpers/Fiel'
+import { useMouseDown } from '../../hooks/useMouseDown/useMouseDown';
 
 export interface CellProps {
   /**
@@ -33,6 +34,7 @@ export const checkIsActiveCell = (cell: CellType): boolean => [
 export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
 
   const isActiveCell = checkIsActiveCell(children)
+  const [mouseDown, setMouseDown, setMouseUp] = useMouseDown()
 
   const onClick = () => {
     /**
@@ -54,9 +56,25 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
     }
   }
 
+  const onMouseDown = () => {
+    if (isActiveCell) {
+      setMouseDown()
+    }
+  }
+  const onMouseUp = () => {
+    if (isActiveCell) {
+      setMouseUp()
+    }
+  }
+
+
   const props = {
     onClick,
     onContextMenu,
+    onMouseDown,
+    onMouseUp,
+    onMouseLeave: onMouseUp,
+    mouseDown,
     'data-testid': `${children}_${coords}`
   }
 
@@ -65,25 +83,13 @@ export const Cell: FC<CellProps> = ({ children, coords, ...rest }) => {
 }
 
 interface ComponentMapProps {
-
-  /**
-   * Children
-   */
   children: CellType
-
-  /**
-   * Onclick handler
-   */
-  onClick: (elem: React.MouseEvent<HTMLElement>) => void;
-
-  /**
-   * onContextMenu handler
-   */
+  onClick: (elem: React.MouseEvent<HTMLElement>) => void
   onContextMenu: (coords: React.MouseEvent<HTMLElement>) => void
-
-  /**
-   * Test id
-   */
+  onMouseDown: () => void
+  onMouseUp: () => void
+  onMouseLeave: () => void
+  mouseDown: boolean
   'data-testid'?: string
 
 }
@@ -117,8 +123,11 @@ const ComponentMap: FC<ComponentMapProps> = ({
 
 }
 
+interface ClosedFrameProps {
+  mouseDown: boolean
+}
 
-const ClosedFrame = styled.div`
+const ClosedFrame = styled.div<ClosedFrameProps>`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -129,7 +138,7 @@ const ClosedFrame = styled.div`
   background-color: #d1d1d1;
   border-width: 3px;
   border-style: solid;
-  border-color: white #9e9e9e #9e9e9e white;
+  border-color: ${({ mouseDown = false }) => mouseDown ? 'transparent' : 'white #9e9e9e #9e9e9e white'};
   &:hover {
     filter: brightness(1.1);
   }
